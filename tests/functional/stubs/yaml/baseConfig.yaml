@@ -1,0 +1,12 @@
+- conditions:
+    conditionA: 'A'
+    conditionB:
+      - 'B1'
+      - 'B2'
+    conditionC:
+      NOT: 'C'
+    conditionD:
+      stringStartsWith: 'D'
+  result:
+    resultX: 'X'
+    resultY: 'Y'
