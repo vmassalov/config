@@ -6,7 +6,18 @@
     conditionC:
       NOT: 'C'
     conditionD:
-      stringStartsWith: 'D'
+      - stringStartsWith: 'D1'
+      - 'D2'
+    conditionE:
+      NOT:
+        - stringStartsWith: 'E1'
+        - 'E2'
+    conditionF:
+      stringStartsWith: 'F'
+    conditionG:
+      stringStartsWith:
+        - 'G1'
+        - 'G2'
   result:
     resultX: 'X'
     resultY: 'Y'

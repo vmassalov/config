@@ -18,7 +18,7 @@ class Client
         $configData = $this->provider->read($configName);
         $configMap = $this->parserFactory->build($configName)->parse($configData);
 
-        var_dump($configMap);
+//        var_dump($configMap);
 
         return [];
     }

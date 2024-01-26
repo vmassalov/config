@@ -5,6 +5,7 @@ namespace VMassalov\Config\Structure;
 class ConfigItem
 {
     public function __construct(
+        public readonly ItemConditions $conditions,
         public readonly ItemResult $result,
     ) {
     }
