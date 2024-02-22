@@ -17,6 +17,19 @@ jobs:
           path: src/
           standard: PSR12
 
+  static-analize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v3
+      - name: Composer install
+        uses: php-actions/composer@v6
+      - uses: php-actions/phpstan@v3
+        with:
+          path: src/
+          php_version: "8.2"
+          level: 5
+
   unit-tests:
     runs-on: ubuntu-latest
     steps:

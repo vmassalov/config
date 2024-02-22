@@ -12,6 +12,7 @@ class ClientFactory
 {
     /**
      * @param string $dsn Root path for file config or DB connection string
+     * @throws InvalidConfigurationException
      * @return Client
      */
     public static function build(
@@ -21,6 +22,7 @@ class ClientFactory
 
         $provider = match ($parsedDsn['scheme']) {
             Scheme::Filesystem => new FileProvider($parsedDsn['path']),
+            default => throw new InvalidConfigurationException('Unsupported DSN scheme'),
         };
 
         return new Client(
