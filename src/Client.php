@@ -1,8 +1,9 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VMassalov\Config;
 
-use VMassalov\Config\Parsers\ParserInterface;
 use VMassalov\Config\Providers\ProviderInterface;
 
 class Client

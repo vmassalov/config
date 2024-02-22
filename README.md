@@ -2,6 +2,8 @@
 
 Library for matching rulesets based on file configs
 
+The main goal of this package is to move out endless sequences of business logic 'elseif' outside of the code. It can be mapping exception classes to error codes, discount calculation rules, or any other strategy conditions. All conditions that do not change often enough and are not worth putting in the database can be conveniently transferred to the configs.
+
 ## Install
 
 Via composer
@@ -45,7 +47,6 @@ Create yaml config file, e.g.:
     needOvertimeApprove: false
 ```
 All result blocks should contain same keys. All condition block can contain a different keys with single or multiple options.
-
 ```php
 $configClient = \VMassalov\Config\ClientFactory::build('filesystem://./path/to/configs');
 $configClient->find(
@@ -58,11 +59,10 @@ $configClient->find(
 ```
 Client will return a result of first full match item based on passed criteria
 ## Configuration
-
 ### DSN
-
 filesystem://
-
+### Config syntax
+See examples in tests/functional/stubs/yaml/baseConfig.yaml
 ## Test
 Run unit and functional test in docker
 ```shell
@@ -72,12 +72,6 @@ Run unit and functional test locally
 ```shell
 php ./vendor/bin/phpunit
 ```
-
 ## Roadmap
-
-* [ ] Add Psalm
-* [ ] Add PHPStan
-* [ ] Change license to MIT
-
-## Related
-https://github.com/Nyholm/dsn?tab=readme-ov-file#definition
+* [ ] Add JSON support
+* [ ] Add XML support

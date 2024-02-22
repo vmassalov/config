@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VMassalov\Config\Structure;
 
@@ -7,7 +9,8 @@ class ConfigMap
     /** @var array<ConfigItem> */
     private array $items;
 
-    public function __construct(ConfigItem... $items) {
+    public function __construct(ConfigItem ...$items)
+    {
         foreach ($items as $item) {
             $this->addItem($item);
         }

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VMassalov\Config\Structure;
 
@@ -6,7 +8,8 @@ class ItemConditions implements \Iterator
 {
     private array $data;
 
-    public function __construct(Condition... $conditions) {
+    public function __construct(Condition ...$conditions)
+    {
         foreach ($conditions as $condition) {
             $this->add($condition);
         }

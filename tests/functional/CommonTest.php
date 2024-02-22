@@ -7,7 +7,7 @@ use VMassalov\Config\ClientFactory;
 
 class CommonTest extends TestCase
 {
-    public function testBuild(): void
+    public function testRun(): void
     {
         $client = ClientFactory::build('filesystem://./tests/functional/stubs/');
         $result = $client->find(
@@ -16,10 +16,10 @@ class CommonTest extends TestCase
                 'conditionA' => 'A',
                 'conditionB' => 'B2',
                 'conditionC' => 'notC',
-                'conditionD' => 'D1starts',
+                'conditionD' => 'D1Starts',
                 'conditionE' => 'notE2',
-                'conditionF' => 'Fstarts',
-                'conditionG' => 'G1starts',
+                'conditionF' => 'FStarts',
+                'conditionG' => 'G1Starts',
             ]
         );
         $this->assertSame(
