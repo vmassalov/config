@@ -16,7 +16,7 @@ jobs:
         with:
           version: "10.5"
           php_version: "8.2"
-          php_extensions: "xdebug,yaml"
+          php_extensions: "xdebug yaml"
           coverage_clover: "coverage/clover.xml"
           bootstrap: "vendor/autoload.php"
           configuration: "phpunit.xml"
