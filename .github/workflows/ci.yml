@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Composer install
         uses: php-actions/composer@v6
       - name: PHP Code Sniffer
@@ -17,11 +17,12 @@ jobs:
           path: src/
           standard: PSR12
 
-  static-analize:
+  static-analyze:
+    needs: coding-standard
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Composer install
         uses: php-actions/composer@v6
       - uses: php-actions/phpstan@v3
@@ -31,10 +32,13 @@ jobs:
           level: 5
 
   unit-tests:
+    needs:
+      - coding-standard
+      - static-analyze
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Composer install
         uses: php-actions/composer@v6
       - name: PHPUnit Tests
