@@ -1,0 +1,29 @@
+{
+  "name": "vmassalov/config",
+  "description": "Configuration service",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.2"
+  },
+  "suggest": {
+    "ext-yaml": "For parsing YAML configs",
+    "ext-json": "For parsing JSON configs",
+    "ext-pdo": "For working with DB config"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.5.0",
+    "squizlabs/php_codesniffer": "^3.0",
+    "phpstan/phpstan": "^1.10"
+  },
+  "autoload": {
+    "psr-4": {
+      "VMassalov\\Config\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "VMassalov\\Config\\Tests\\": "tests/"
+    }
+  }
+}

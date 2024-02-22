@@ -1,0 +1,55 @@
+name: CI
+
+on: [push]
+
+jobs:
+  coding-standard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+      - name: Composer install
+        uses: php-actions/composer@v6
+      - name: PHP Code Sniffer
+        uses: php-actions/phpcs@v1
+        with:
+          php_version: 8.2
+          path: src/
+          standard: PSR12
+
+  static-analyze:
+    needs: coding-standard
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+      - name: Composer install
+        uses: php-actions/composer@v6
+      - uses: php-actions/phpstan@v3
+        with:
+          path: src/
+          php_version: "8.2"
+          level: 5
+
+  unit-tests:
+    needs:
+      - coding-standard
+      - static-analyze
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+      - name: Composer install
+        uses: php-actions/composer@v6
+      - name: PHPUnit Tests
+        uses: php-actions/phpunit@master
+        env:
+          XDEBUG_MODE: coverage
+        with:
+          version: "10.5"
+          php_version: "8.2"
+          php_extensions: "xdebug yaml"
+          coverage_clover: "coverage/clover.xml"
+          bootstrap: "vendor/autoload.php"
+          configuration: "phpunit.xml"
+          args: --coverage-text
