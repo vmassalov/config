@@ -2,7 +2,7 @@
 
 namespace VMassalov\Config\Structure;
 
-class CriteriaCases
+class CriteriaCases implements \Iterator
 {
     private array $data;
 
@@ -15,5 +15,30 @@ class CriteriaCases
     public function add(CaseElement $caseElement): void
     {
         $this->data[] = $caseElement;
+    }
+
+    public function current(): CaseElement
+    {
+        return current($this->data);
+    }
+
+    public function next(): void
+    {
+        next($this->data);
+    }
+
+    public function key(): ?int
+    {
+        return key($this->data);
+    }
+
+    public function valid(): bool
+    {
+        return key($this->data) !== null;
+    }
+
+    public function rewind(): void
+    {
+        reset($this->data);
     }
 }

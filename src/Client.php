@@ -16,10 +16,14 @@ class Client
     public function find(string $configName, array $searchConditions): array
     {
         $configData = $this->provider->read($configName);
-        $configMap = $this->parserFactory->build($configName)->parse($configData);
+        $configMap = $this->parserFactory
+            ->build($configName)
+            ->parse($configData);
+        $result = $configMap->findMatch($searchConditions);
+        if (null === $result) {
+            return [];
+        }
 
-//        var_dump($configMap);
-
-        return [];
+        return $result->result->data;
     }
 }

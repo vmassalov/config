@@ -4,7 +4,7 @@ namespace VMassalov\Config\Structure;
 
 class ItemResult
 {
-    private readonly array $data;
+    public readonly array $data;
 
     public function __construct(
         string|array $data

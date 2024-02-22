@@ -2,7 +2,7 @@
 
 namespace VMassalov\Config\Structure;
 
-class ItemConditions
+class ItemConditions implements \Iterator
 {
     private array $data;
 
@@ -15,5 +15,30 @@ class ItemConditions
     public function add(Condition $condition): void
     {
         $this->data[$condition->name->value] = $condition;
+    }
+
+    public function current(): Condition
+    {
+        return current($this->data);
+    }
+
+    public function next(): void
+    {
+        next($this->data);
+    }
+
+    public function key(): ?string
+    {
+        return key($this->data);
+    }
+
+    public function valid(): bool
+    {
+        return key($this->data) !== null;
+    }
+
+    public function rewind(): void
+    {
+        reset($this->data);
     }
 }
