@@ -6,8 +6,12 @@ namespace VMassalov\Config\Structure;
 
 class ItemResult
 {
+    /** @var array<string|int|float|bool> */
     public readonly array $data;
 
+    /**
+     * @param string|array<int|string|float|bool> $data
+     */
     public function __construct(
         string|array $data
     ) {

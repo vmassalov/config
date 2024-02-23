@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace VMassalov\Config\Structure;
 
+/**
+ * @implements \Iterator<int, CaseElement>
+ */
 class CriteriaCases implements \Iterator, \Countable
 {
+    /** @var array<int, CaseElement> */
     private array $data = [];
 
     public function __construct(CaseElement ...$elements)
@@ -20,7 +24,7 @@ class CriteriaCases implements \Iterator, \Countable
         $this->data[] = $caseElement;
     }
 
-    public function current(): CaseElement
+    public function current(): CaseElement|false
     {
         return current($this->data);
     }
@@ -32,7 +36,12 @@ class CriteriaCases implements \Iterator, \Countable
 
     public function key(): ?int
     {
-        return key($this->data);
+        $key = key($this->data);
+        if (!is_null($key) && !is_int($key)) {
+            throw new \LogicException('Invalid criteria key');
+        }
+
+        return $key;
     }
 
     public function valid(): bool

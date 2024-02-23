@@ -21,6 +21,9 @@ class ConfigMap
         $this->items[] = $item;
     }
 
+    /**
+     * @param array<string, int|string|float|bool> $criteria
+     */
     public function findMatch(array $criteria): ?ConfigItem
     {
         foreach ($this->items as $configItem) {

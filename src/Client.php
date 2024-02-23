@@ -14,6 +14,10 @@ class Client
     ) {
     }
 
+    /**
+     * @param array<string, int|string|float|bool> $searchConditions
+     * @return array<int|string, int|string|float|bool>
+     */
     public function find(string $configName, array $searchConditions): array
     {
         $configData = $this->provider->read($configName);

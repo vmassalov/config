@@ -17,6 +17,9 @@ class ConfigItem
         }
     }
 
+    /**
+     * @param array<string, int|string|float|bool> $criteria
+     */
     public function isMatchCriteria(array $criteria): bool
     {
         foreach ($this->conditions as $condition) {

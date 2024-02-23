@@ -22,7 +22,6 @@ class ClientFactory
 
         $provider = match ($parsedDsn['scheme']) {
             Scheme::Filesystem => new FileProvider($parsedDsn['path']),
-            default => throw new InvalidConfigurationException('Unsupported DSN scheme'),
         };
 
         return new Client(
@@ -32,6 +31,7 @@ class ClientFactory
     }
 
     /**
+     * @return array{"scheme": Scheme, "path": string}
      * @throws InvalidConfigurationException
      */
     private static function parseDsn(string $dsn): array
