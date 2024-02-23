@@ -36,12 +36,7 @@ class CriteriaCases implements \Iterator, \Countable
 
     public function key(): ?int
     {
-        $key = key($this->data);
-        if (!is_null($key) && !is_int($key)) {
-            throw new \LogicException('Invalid criteria key');
-        }
-
-        return $key;
+        return key($this->data);
     }
 
     public function valid(): bool

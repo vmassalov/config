@@ -36,12 +36,7 @@ class ItemConditions implements \Iterator, \Countable
 
     public function key(): ?string
     {
-        $key = key($this->data);
-        if (!is_null($key) && !is_string($key)) {
-            throw new \LogicException('Invalid condition key');
-        }
-
-        return $key;
+        return key($this->data);
     }
 
     public function valid(): bool
