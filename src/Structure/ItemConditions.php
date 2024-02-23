@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace VMassalov\Config\Structure;
 
-class ItemConditions implements \Iterator
+class ItemConditions implements \Iterator, \Countable
 {
-    private array $data;
+    private array $data = [];
 
     public function __construct(Condition ...$conditions)
     {
@@ -43,5 +43,10 @@ class ItemConditions implements \Iterator
     public function rewind(): void
     {
         reset($this->data);
+    }
+
+    public function count(): int
+    {
+        return count($this->data);
     }
 }

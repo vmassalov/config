@@ -4,12 +4,17 @@ declare(strict_types=1);
 
 namespace VMassalov\Config\Structure;
 
+use VMassalov\Config\Exceptions\InvalidResourceException;
+
 class ConfigItem
 {
     public function __construct(
         private readonly ItemConditions $conditions,
         public readonly ItemResult $result,
     ) {
+        if ($this->conditions->count() === 0) {
+            throw new InvalidResourceException('Unsupported empty conditions');
+        }
     }
 
     public function isMatchCriteria(array $criteria): bool
